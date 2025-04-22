@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>About Our Team - AI Driven Diagnosis </title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='logo.png') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        color: #333;
+        overflow-x: hidden;
+      }
+      .container {
+        margin-top: 5%;
+        max-width: 1200px;
+        padding: 2rem;
+      }
+      .section-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #2c3e50;
+        position: relative;
+        margin-bottom: 1.5rem;
+        animation: slideIn 1s ease-out;
+      }
+      .section-title::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+        width: 80px;
+        height: 4px;
+        background: #007bff;
+        border-radius: 2px;
+      }
+      p {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: #555;
+        margin-bottom: 1.5rem;
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeInUp 1s ease-out forwards;
+      }
+      .card-section {
+        background: #fff;
+        border-radius: 15px;
+        padding: 2rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .card-section:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+      }
+      .hero-section {
+        background: url('https://images.unsplash.com/photo-1516321310764-8a48d4c9468b') no-repeat center center;
+        background-size: cover;
+        color: #fff;
+        padding: 5rem 2rem;
+        text-align: center;
+        border-radius: 15px;
+        margin-bottom: 3rem;
+        position: relative;
+        overflow: hidden;
+      }
+      .hero-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 1;
+      }
+      .hero-content {
+        position: relative;
+        z-index: 2;
+      }
+      .hero-content h1 {
+        font-size: 3rem;
+        font-weight: 800;
+        animation: zoomIn 1.5s ease-out;
+      }
+      .hero-content p {
+        font-size: 1.3rem;
+        margin: 1rem auto;
+        max-width: 600px;
+      }
+      .btn-primary {
+        background: #007bff;
+        border: none;
+        padding: 0.75rem 2rem;
+        font-size: 1.1rem;
+        border-radius: 50px;
+        transition: background 0.3s ease, transform 0.3s ease;
+      }
+      .btn-primary:hover {
+        background: #0056b3;
+        transform: scale(1.05);
+      }
+      .icon {
+        font-size: 2rem;
+        color: #007bff;
+        margin-right: 1rem;
+      }
+      .team-card {
+        background: #fff;
+        border-radius: 15px;
+        padding: 1.5rem;
+        text-align: center;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .team-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+      }
+      .team-card img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-bottom: 1rem;
+        border: 4px solid #007bff;
+      }
+      .team-card h5 {
+        font-size: 1.5rem;
+        color: #2c3e50;
+        margin-bottom: 0.5rem;
+      }
+      .team-card p {
+        font-size: 1rem;
+        color: #555;
+      }
+      .social-icons a {
+        font-size: 1.5rem;
+        color: #007bff;
+        margin: 0 0.5rem;
+        transition: color 0.3s ease, transform 0.3s ease;
+      }
+      .social-icons a:hover {
+        color: #0056b3;
+        transform: scale(1.2);
+      }
+      .skills-list {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.5rem;
+      }
+      .skills-list li {
+        background: #e9f1ff;
+        color: #007bff;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-size: 0.9rem;
+      }
+      .testimonial-section {
+        background: #f8f9fa;
+        padding: 2rem;
+        border-radius: 15px;
+        text-align: center;
+      }
+      .testimonial-section blockquote {
+        font-size: 1.2rem;
+        color: #555;
+        margin-bottom: 1rem;
+      }
+      .testimonial-section cite {
+        font-size: 1rem;
+        color: #007bff;
+      }
+      /* Carousel Styling */
+      .carousel-control-prev,
+      .carousel-control-next {
+        width: 5%;
+        background: rgba(0, 0, 0, 0.3);
+        border-radius: 15px;
+      }
+      .carousel-indicators {
+        bottom: -50px;
+      }
+      .carousel-indicators button {
+        background: #007bff;
+      }
+      /* Animations */
+      @keyframes fadeInUp {
+        0% { opacity: 0; transform: translateY(20px); }
+        100% { opacity: 1; transform: translateY(0); }
+      }
+      @keyframes slideIn {
+        0% { opacity: 0; transform: translateX(-20px); }
+        100% { opacity: 1; transform: translateX(0); }
+      }
+      @keyframes zoomIn {
+        0% { opacity: 0; transform: scale(0.8); }
+        100% { opacity: 1; transform: scale(1); }
+      }
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .hero-content h1 {
+          font-size: 2rem;
+        }
+        .section-title {
+          font-size: 2rem;
+        }
+        p {
+          font-size: 1rem;
+        }
+        .team-card img {
+          width: 120px;
+          height: 120px;
+        }
+      }
+      @media (max-width: 576px) {
+        .hero-section {
+          padding: 3rem 1rem;
+        }
+        .card-section, .team-card, .testimonial-section {
+          padding: 1.5rem;
+        }
+        .carousel-control-prev,
+        .carousel-control-next {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+ 
+    {% include 'partials/navbar.html' %}
+
+    <div class="container" id="team">
+      <div class="card-section">
+        <h3 class="section-title"><i class="fas fa-user icon"></i>About</h3>
+        <h5>Meet the Developer</h5>
+        <p>Hello, your AI and Machine Learning Engineer with over 5 years of experience in the field. I am passionate about harnessing the power of technology to make a positive impact on people's lives. Allow me to share a bit about my journey in the world of artificial intelligence and machine learning.</p>
+      </div>
+
+      <div class="card-section">
+        <h3 class="section-title"><i class="fas fa-brain icon"></i>My Expertise</h3>
+        <p>With a strong academic background in computer science and a deep fascination for AI and ML, I embarked on a journey that has taken me across the globe, working on diverse and innovative projects. Over the years, I've had the privilege of collaborating on international projects that have pushed the boundaries of what's possible in AI and ML.</p>
+      </div>
+
+      <div class="card-section">
+        <h3 class="section-title"><i class="fas fa-star icon"></i>A Commitment to Excellence</h3>
+        <p>My work is driven by a commitment to excellence and a belief that technology should be accessible and beneficial to everyone. Whether it's developing predictive models, creating intelligent algorithms, or designing user-friendly interfaces, I strive for solutions that are both cutting-edge and user-centric.</p>
+      </div>
+
+      <div class="card-section">
+        <h3 class="section-title"><i class="fas fa-heartbeat icon"></i>Passion for Health Tech</h3>
+        <p>The development of Medical Health Center represents a convergence of my passion for AI and my dedication to improving healthcare accessibility. I believe that AI has the potential to transform the way we approach healthcare, making it more personalized and informative. This platform is a testament to that vision.</p>
+      </div>
+
+      <div class="card-section">
+        <h3 class="section-title"><i class="fas fa-users icon"></i>Our Team</h3>
+        <p>Meet the talented individuals who work alongside me to make Medical Health Center a reality. Together, we combine expertise in AI, healthcare, and design to deliver a platform that empowers you.</p>
+        <div id="teamCarousel" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="team-card">
+                <img src="../static/img.png" alt="Junaid Khan">
+                <h5>G Gangadhara</h5>
+                <p>Full Stack Developer</p>
+                <ul class="skills-list">
+                  <li>Machine Learning</li>
+                  <li>Python</li>
+                  <li>MERN Stack</li>
+                  <li>Mobile Application Development</li>
+                </u>
+                <div class="social-icons">
+                  <a href="https://linkedin.com/in/junaidkhan" target="_blank"><i class="fab fa-linkedin"></i></a>
+                  <a href="https://github.com/junaidkhan" target="_blank"><i class="fab fa-github"></i></a>
+                  <a href="https://twitter.com/junaidkhan" target="_blank"><i class="fab fa-twitter"></i></a>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="team-card">
+                <img src="../static/img.png" alt="Sarah Ahmed">
+                <h5>R Jeevan</h5>
+                <p>Healthcare Specialist</p>
+                <ul class="skills-list">
+                  <li>Medical Research</li>
+                  <li>Python</li>
+                  <li>Machine Learning</li>
+                </ul>
+                <div class="social-icons">
+                  <a href="https://linkedin.com/in/sarahahmed" target="_blank"><i class="fab fa-linkedin"></i></a>
+                  <a href="https://twitter.com/sarahahmed" target="_blank"><i class="fab fa-twitter"></i></a>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="team-card">
+                <img src="../static/img.png" alt="Ali Raza">
+                <h5>M Mahesh Babu</h5>
+                <p>UI/UX Designer</p>
+                <ul class="skills-list">
+                  <li>Figma</li>
+                  <li>User Experience</li>
+                  <li>Web Design</li>
+                </ul>
+                <div class="social-icons">
+                  <a href="https://linkedin.com/in/aliraza" target="_blank"><i class="fab fa-linkedin"></i></a>
+                  <a href="https://dribbble.com/aliraza" target="_blank"><i class="fab fa-dribbble"></i></a>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="team-card">
+                <img src="../static/img.png" alt="Ali Raza">
+                <h5>Ch Prasanna</h5>
+                <p>UI/UX Designer</p>
+                <ul class="skills-list">
+                  <li>Figma</li>
+                  <li>User Experience</li>
+                  <li>Web Design</li>
+                </ul>
+                <div class="social-icons">
+                  <a href="https://linkedin.com/in/aliraza" target="_blank"><i class="fab fa-linkedin"></i></a>
+                  <a href="https://dribbble.com/aliraza" target="_blank"><i class="fab fa-dribbble"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#teamCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span style="color: rgb(0, 0, 0); font-size:60px;"><</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#teamCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span style="color: rgb(0, 0, 0);font-size:60px;">></span>
+          </button>
+        </div>
+      </div>
+
+      <div class="card-section">
+        <h3 class="section-title"><i class="fas fa-handshake icon"></i>Join Us on this Journey</h3>
+        <p>I invite you to explore Medical Health Center and experience firsthand the fusion of AI and healthcare. Together, we can empower individuals with knowledge, promote well-being, and contribute to a brighter and healthier future.</p>
+      </div>
+
+      <div class="testimonial-section">
+        <h3 class="section-title"><i class="fas fa-quote-left icon"></i>What People Say</h3>
+        <blockquote>
+          "The team at Medical Health Center has created an incredible platform that makes healthcare information accessible and easy to understand. Their dedication to innovation is inspiring!"
+        </blockquote>
+        <cite>- Dr. Ayesha Malik, Healthcare Professional</cite>
+        <blockquote>
+          "As a user, I feel empowered by the insights provided by this platform. The team's expertise in AI and healthcare shines through in every feature."
+        </blockquote>
+        <cite>- Omar Farooq, User</cite>
+      </div>
+    </div>
+    {% include 'partials/footer.html' %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <script>
+      // Add scroll animation for sections
+      document.addEventListener('DOMContentLoaded', () => {
+        const sections = document.querySelectorAll('.card-section, .testimonial-section, .team-card');
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.style.opacity = 1;
+              entry.target.style.transform = 'translateY(0)';
+            }
+          });
+        }, { threshold: 0.2 });
+
+        sections.forEach(section => {
+          section.style.opacity = 0;
+          section.style.transform = 'translateY(20px)';
+          section.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+          observer.observe(section);
+        });
+      });
+    </script>
+  </body>
+</html>

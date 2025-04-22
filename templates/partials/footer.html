@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Footer - Health Care Center</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1v2+wL8qVCdO6sM7vA8gJf8gJ6gJ6gJ6gJ6gJ6gJ6gJ6gJ6gJ6gJ6gJ6gJ6gJ6gJ6gJ6gJ6gJ6gJ6g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+   
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/footer.css') }}">
+
+</head>
+<body>
+    <footer>
+        <div class="container footer-content">
+            <div class="row">
+                <!-- Logo and Title -->
+                <div class="col-md-4 col-sm-12 footer-section">
+                    <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" class="footer-logo">
+                    <h2 class="footer-title">D<span style="color: cadetblue;">ai</span>gno<span style="color: #ff4b2b;">AI</span></h2>
+                    <p>Providing advanced AI-powered healthcare solutions for a better tomorrow.</p>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="col-md-2 col-sm-6 footer-section">
+                    <h5>Quick Links</h5>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="/about">About</a></li>
+                        <li><a href="/contact">Contact</a></li>
+                        <li><a href="/blog">Blog</a></li>
+                    </ul>
+                </div>
+
+                <!-- Resources -->
+                <div class="col-md-2 col-sm-6 footer-section">
+                    <h5>Resources</h5>
+                    <ul>
+                        <li><a href="#">Health Tips</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Support</a></li>
+                        <li><a href="/developer">Developers</a></li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter and Social -->
+                <div class="col-md-4 col-sm-12 footer-section">
+                    <h5>Stay Connected</h5>
+                    <div class="newsletter-form">
+                        <input type="email" placeholder="Enter your email" id="newsletter-email">
+                        <button type="button" onclick="subscribe()">Subscribe</button>
+                    </div>
+                    <div class="social-icons mt-4">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <p>&copy; 2025 DaignoAI. All Rights Reserved. Designed with <i class="fas fa-heart" style="color: #ff4b2b;"></i> by DaignoAI.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Newsletter Subscription Function
+        function subscribe() {
+            const email = document.getElementById('newsletter-email').value;
+            if (email) {
+                alert(`Thank you for subscribing with ${email}!`);
+                document.getElementById('newsletter-email').value = '';
+            } else {
+                alert('Please enter a valid email address.');
+            }
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</body>
